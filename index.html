@@ -1,154 +1,350 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sebastian Fisher</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Courier+Prime&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sebastian Fisher // Welcome</title>
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<style>
 
-    :root {
-      --bg:    #0c0c0c;
-      --fg:    #e8e0d0;
-      --dim:   #6a6258;
-      --accent:#c8a97e;
+/* =========================================
+   BASIC PAGE SETUP
+   ========================================= */
+
+body{
+    background-color:#000000;
+    background-image:url("https://www.transparenttextures.com/patterns/stardust.png");
+    color:#00ff99;
+    font-family:"Courier New", monospace;
+    margin:0;
+    padding:0;
+    cursor:crosshair;
+}
+
+/* =========================================
+   MAIN SITE BOX
+   ========================================= */
+
+.wrapper{
+    width:760px;
+    margin:30px auto;
+    border:4px ridge #00ff99;
+    background:#111111;
+    padding:12px;
+    box-shadow:0 0 20px #00ff99;
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.header{
+    text-align:center;
+    border:3px double #ff00ff;
+    padding:20px;
+    background:linear-gradient(to bottom,#220022,#000000);
+}
+
+.header h1{
+    font-size:52px;
+    margin:0;
+    color:#ffff00;
+    text-shadow:
+        2px 2px #ff00ff,
+        4px 4px #00ffff;
+    letter-spacing:4px;
+}
+
+.tagline{
+    margin-top:10px;
+    color:#00ffff;
+    font-size:14px;
+}
+
+/* =========================================
+   BLINKING TEXT
+   ========================================= */
+
+.blink{
+    animation:blink 1s steps(2,start) infinite;
+}
+
+@keyframes blink{
+    to{
+        visibility:hidden;
+    }
+}
+
+/* =========================================
+   LAYOUT
+   ========================================= */
+
+.content{
+    display:flex;
+    gap:14px;
+    margin-top:14px;
+}
+
+/* =========================================
+   SIDEBAR
+   ========================================= */
+
+.sidebar{
+    width:220px;
+    border:3px groove #00ffff;
+    background:#050505;
+    padding:10px;
+}
+
+.sidebar h2{
+    margin-top:0;
+    color:#ff66ff;
+    font-size:20px;
+    border-bottom:1px dashed #ff66ff;
+    padding-bottom:6px;
+}
+
+.sidebar a{
+    display:block;
+    color:#00ffff;
+    text-decoration:none;
+    margin:8px 0;
+}
+
+.sidebar a:hover{
+    background:#00ffff;
+    color:#000000;
+}
+
+/* =========================================
+   MAIN CONTENT
+   ========================================= */
+
+.main{
+    flex:1;
+    border:3px groove #ffff00;
+    background:#080808;
+    padding:16px;
+}
+
+.main h2{
+    color:#ffff00;
+    margin-top:0;
+}
+
+.main p{
+    line-height:1.7;
+    color:#cccccc;
+}
+
+/* =========================================
+   GUESTBOOK STYLE BOX
+   ========================================= */
+
+.box{
+    border:2px dashed #00ff99;
+    padding:10px;
+    margin-top:20px;
+    background:#000000;
+}
+
+/* =========================================
+   MARQUEE
+   ========================================= */
+
+.marquee{
+    margin-top:16px;
+    background:#220000;
+    color:#ff4444;
+    border:2px inset #ff0000;
+    padding:6px;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.footer{
+    margin-top:16px;
+    text-align:center;
+    border-top:2px dashed #444444;
+    padding-top:10px;
+    font-size:12px;
+    color:#666666;
+}
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+
+.button88{
+    display:inline-block;
+    margin-top:12px;
+    border:2px outset #cccccc;
+    background:#222222;
+    color:#ffffff;
+    padding:4px 10px;
+    text-decoration:none;
+    font-size:12px;
+}
+
+.button88:hover{
+    border-style:inset;
+    background:#000000;
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media(max-width:800px){
+
+    .wrapper{
+        width:95%;
     }
 
-    html, body {
-      height: 100%;
-      background: var(--bg);
-      color: var(--fg);
+    .content{
+        flex-direction:column;
     }
 
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 40px 24px;
-      font-family: 'Cormorant Garamond', Georgia, serif;
+    .sidebar{
+        width:auto;
     }
 
-    /* subtle noise texture */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      opacity: 0.35;
-    }
+}
 
-    .wrap {
-      position: relative;
-      text-align: center;
-      max-width: 520px;
-    }
-
-    .rule {
-      width: 48px;
-      height: 1px;
-      background: var(--accent);
-      margin: 0 auto 36px;
-      opacity: 0.5;
-    }
-
-    h1 {
-      font-size: clamp(36px, 8vw, 64px);
-      font-weight: 300;
-      letter-spacing: 0.12em;
-      color: var(--fg);
-      line-height: 1.1;
-      margin-bottom: 6px;
-    }
-
-    .sub {
-      font-family: 'Courier Prime', monospace;
-      font-size: 11px;
-      letter-spacing: 0.3em;
-      color: var(--dim);
-      text-transform: uppercase;
-      margin-bottom: 48px;
-    }
-
-    .message {
-      font-size: 18px;
-      font-weight: 300;
-      font-style: italic;
-      color: var(--dim);
-      line-height: 1.7;
-      margin-bottom: 48px;
-    }
-
-    .contact {
-      font-family: 'Courier Prime', monospace;
-      font-size: 12px;
-      letter-spacing: 0.15em;
-      color: var(--dim);
-    }
-
-    .contact a {
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s;
-    }
-
-    .contact a:hover {
-      border-color: var(--accent);
-    }
-
-    .rule-bottom {
-      width: 48px;
-      height: 1px;
-      background: var(--accent);
-      margin: 48px auto 0;
-      opacity: 0.3;
-    }
-
-    .year {
-      font-family: 'Courier Prime', monospace;
-      font-size: 11px;
-      color: var(--dim);
-      letter-spacing: 0.2em;
-      margin-top: 16px;
-      opacity: 0.5;
-    }
-
-    /* fade in */
-    .wrap { animation: fade 1.4s ease both; }
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+</style>
 </head>
+
 <body>
-  <div class="wrap">
-    <div class="rule"></div>
 
-    <h1>Sebastian Fisher</h1>
-    <p class="sub">Something is coming</p>
+<div class="wrapper">
 
-    <p class="message">
-      A new space is being built.<br>
-      Check back soon.
-    </p>
+    <!-- =========================
+         HEADER
+         ========================= -->
 
-    <p class="contact">
-      In the meantime &mdash;
-      <a href="mailto:sebastian.fisher@sauberprevost.com">get in touch</a>
-    </p>
+    <div class="header">
 
-    <div class="rule-bottom"></div>
-    <p class="year" id="yr"></p>
-  </div>
+        <div class="blink">★ WELCOME TO MY WEBSITE ★</div>
 
-  <script>
-    document.getElementById('yr').textContent = new Date().getFullYear();
-  </script>
+        <h1>SEBASTIAN FISHER</h1>
+
+        <div class="tagline">
+            philosophy / music / internet / weird computers
+        </div>
+
+    </div>
+
+    <!-- =========================
+         MARQUEE
+         ========================= -->
+
+    <div class="marquee">
+        <marquee scrollamount="6">
+            UNDER CONSTRUCTION !!! best viewed on Netscape Navigator !!! 
+            welcome to my corner of the internet !!!
+        </marquee>
+    </div>
+
+    <!-- =========================
+         MAIN LAYOUT
+         ========================= -->
+
+    <div class="content">
+
+        <!-- =====================
+             SIDEBAR
+             ===================== -->
+
+        <div class="sidebar">
+
+            <h2>Links</h2>
+
+            <a href="#">About Me</a>
+            <a href="#">Photography</a>
+            <a href="#">Music</a>
+            <a href="#">Projects</a>
+            <a href="#">Contact</a>
+
+            <br>
+
+            <img
+                src="https://media.tenor.com/DimzPZMypFcAAAAM/lain-serial-experiments-lain.gif"
+                width="100%"
+            >
+
+            <br><br>
+
+            <img
+                src="https://cyber.dabamos.de/88x31/linuxnow.gif"
+            >
+
+            <img
+                src="https://cyber.dabamos.de/88x31/noframes.gif"
+            >
+
+        </div>
+
+        <!-- =====================
+             MAIN CONTENT
+             ===================== -->
+
+        <div class="main">
+
+            <h2>About Me</h2>
+
+            <p>
+                Hi. I'm Seb.
+            </p>
+
+            <p>
+                I like old internet aesthetics, philosophy,
+                strange software, mastering audio,
+                Linux servers, and websites that look like
+                they were built in 1999 at 2AM.
+            </p>
+
+            <p>
+                This site is intentionally ugly.
+                Modern websites are too clean.
+                I wanted something with personality.
+            </p>
+
+            <div class="box">
+
+                <b>Current interests:</b>
+
+                <ul>
+                    <li>self-hosting</li>
+                    <li>old web aesthetics</li>
+                    <li>digital minimalism</li>
+                    <li>music production</li>
+                    <li>weird internet history</li>
+                </ul>
+
+            </div>
+
+            <a class="button88" href="mailto:sebastian.fisher@sauberprevost.com">
+                EMAIL ME
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <div class="footer">
+
+        © 2026 Sebastian Fisher<br>
+        Made with HTML and bad decisions.
+
+    </div>
+
+</div>
+
 </body>
 </html>
